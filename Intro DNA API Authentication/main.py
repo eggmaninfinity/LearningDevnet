@@ -16,7 +16,9 @@ def get_auth_token():
     # Print out the Token
     print("Token Retrieved: {}".format(token))
     # Create a return statement to send the token back for later use
-    return token
+    with open('tokens.txt', 'w') as file:
+        file.write(token)
+
   
 if __name__ == "__main__":
     get_auth_token()
