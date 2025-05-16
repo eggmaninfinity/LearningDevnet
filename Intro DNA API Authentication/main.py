@@ -13,11 +13,11 @@ def get_auth_token():
     resp = requests.post(url, auth=HTTPBasicAuth(env_lab.DNA_CENTER['username'], env_lab.DNA_CENTER['password']), verify=False)
     # Retrieve the Token from the returned JSON
     token = resp.json()['Token']
-    # Print out the Token
-    print("Token Retrieved: {}".format(token))
-    # Create a return statement to send the token back for later use
-    with open('tokens.txt', 'w') as file:
-        file.write(token)
+    # append token to tokens.txt file
+    with open('tokens.txt', 'a') as file:
+        file.write(f'{token}\n')
+    # print confirmation
+    print('Token Retrieved and stored in tokens.txt')
 
   
 if __name__ == "__main__":
